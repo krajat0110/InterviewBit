@@ -1,0 +1,61 @@
+vector<int> Solution::spiralOrder(const vector<vector<int> > &A) {
+    vector<int>V;
+   int m=A.size(),n=A[0].size();
+   //cout<<m<<" "<<n<<endl;
+    int end_i = m-1;
+    int end_j = n-1;
+    
+  
+    for (int w = 0; w <= end_i && w <= end_j; w++)
+    {
+        if(V.size() == m*n){
+            return V;
+        }
+        for (int i = w; i < end_j; i++)
+        {
+            V.push_back(A[w][i]);
+        if(V.size() == m*n){
+            return V;
+          }
+        }
+        
+        for (int i = w; i < end_i; i++)
+        {
+            V.push_back(A[i][end_j]);
+            if(V.size() == m*n){
+            return V;
+         }
+        }
+        
+        
+        
+        for (int i = end_j; i > w; i--)
+        {
+            V.push_back(A[end_i][i]);
+        if(V.size() == m*n){
+            return V;
+        }
+        }
+        
+        for (int i = end_i; i > w; i--)
+        {
+            V.push_back(A[i][w]);
+        
+        if(V.size() == m*n){
+            return V;
+        }
+        }
+        
+        if(w==end_j){
+            V.push_back(A[w][w]);
+       
+        if(V.size() == m*n){
+            return V;
+        }
+         }
+         
+    end_j--;
+    end_i--;
+     }
+    return V;
+}

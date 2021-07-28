@@ -1,0 +1,33 @@
+
+
+    vector<int> Solution::flip(string A) {
+        int si = 0 , ei = 0 , sum = 0 , csum = 0 , idx = 0 ;
+        
+        for(int i = 0; i < A.size()  ; i++ ){
+            if(A[i] == '0'){
+                sum+=1;
+            }
+            else
+            sum-=1;
+            if(sum>=0)
+            {
+                if(sum>csum)
+                {
+                csum = sum;
+                si = idx;
+                ei = i;
+                }
+            }
+            else{
+            sum = 0;
+            idx = i + 1;
+            }        
+        }
+        vector<int>ans;
+        if(csum > 0){
+        ans.push_back(si + 1);
+        ans.push_back(ei + 1);
+        }
+        return ans;
+    }
+

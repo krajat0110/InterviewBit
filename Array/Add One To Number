@@ -1,0 +1,51 @@
+vector<int> Solution::plusOne(vector<int> &A) {
+  int long long p=A.size()-1;
+    for(int k=0;k<=p;k++)
+    {
+    if(A[0]==0){
+        A.erase(A.begin());
+     }
+     else
+      break;
+    }
+    int long long i=A.size()-1;
+    if(A.size()==0){ // if value is null so null+1=1;
+        A.push_back(1);
+        return A;
+    }
+   vector<int>V;
+   int cnt=0;
+   
+   if(A[i]>=0 && A[i]<9) // if last element is less than 9 and more than 0 we can add 1 to it easily 
+   {
+    A[i]=A[i]+1; 
+    return A;
+   }
+   if(A[i]==9) // if last element is nine 
+   {
+    for(int j=i;j>=0;j--)
+    {
+      if(j!=0 && A[j]==9) //if last element is not 0 or only nine 999
+     { 
+        cnt=cnt+1; //carry
+        A[j]=0; //set it to zero
+        continue;
+     }
+    if(j==0 && A[j]==9) //if firt elemnt is 9  eq 999 become 1000 this loop is past of above if loop 
+        {
+        if(cnt==i){
+            A[0]=0;  // we make that elemet to 0
+            A.insert(A.begin(),1); //we insert one in front 
+           // cout<<"@";
+            return A;
+        }
+    }    
+     if(A[j]!=9) // if that element is not 9 like 13 '8' 99
+         {
+        A[j]=A[j]+1; //we can add 1 to that no 8 in this case  
+         return A;
+     }
+    }
+   }
+   return A;
+}
